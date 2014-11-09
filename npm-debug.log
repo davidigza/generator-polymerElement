@@ -1,0 +1,114 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/medianet/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/medianet/.npm/generator-polymerElements/0.0.1/package.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /Users/medianet/.npm/generator-polymerElements/0.0.1/package.tgz
+12 verbose folder .
+13 info prepublish generator-polymerElements@0.0.1
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/medianet/.npm/1f1177db-tar.lock
+16 silly lockFile 531f68ae-olymerElements-0-0-1-package-tgz tar:///Users/medianet/.npm/generator-polymerElements/0.0.1/package.tgz
+17 verbose lock tar:///Users/medianet/.npm/generator-polymerElements/0.0.1/package.tgz /Users/medianet/.npm/531f68ae-olymerElements-0-0-1-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 531f68ae-olymerElements-0-0-1-package-tgz tar:///Users/medianet/.npm/generator-polymerElements/0.0.1/package.tgz
+21 silly lockFile 531f68ae-olymerElements-0-0-1-package-tgz tar:///Users/medianet/.npm/generator-polymerElements/0.0.1/package.tgz
+22 silly lockFile 433bdf47-or-polymerElements-0-0-1-package /Users/medianet/.npm/generator-polymerElements/0.0.1/package
+23 verbose lock /Users/medianet/.npm/generator-polymerElements/0.0.1/package /Users/medianet/.npm/433bdf47-or-polymerElements-0-0-1-package.lock
+24 silly lockFile 433bdf47-or-polymerElements-0-0-1-package /Users/medianet/.npm/generator-polymerElements/0.0.1/package
+25 silly lockFile 433bdf47-or-polymerElements-0-0-1-package /Users/medianet/.npm/generator-polymerElements/0.0.1/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'generator-polymerElements',
+28 silly publish   version: '0.0.1',
+28 silly publish   description: 'Yeoman generator for Polymer Elements',
+28 silly publish   keywords: [ 'yeoman-generator', 'scaffold', 'framework', 'mvc', 'polymer' ],
+28 silly publish   homepage: 'https://github.com/davidigza/generator-polymerElement',
+28 silly publish   bugs: { url: 'https://github.com/davidigza/generator-polymerElement/issues' },
+28 silly publish   author: '',
+28 silly publish   main: 'app/index.js',
+28 silly publish   repository:
+28 silly publish    { type: 'git',
+28 silly publish      url: 'git://github.com/davidigza/generator-polymerElement.git' },
+28 silly publish   scripts: { test: 'mocha --reporter spec' },
+28 silly publish   dependencies:
+28 silly publish    { chalk: '^0.5.1',
+28 silly publish      lodash: '^2.4.1',
+28 silly publish      ncp: '^0.6.0',
+28 silly publish      rimraf: '^2.2.8',
+28 silly publish      'underscore.string': '^2.3.3',
+28 silly publish      'yeoman-generator': '^0.17.2',
+28 silly publish      yosay: '^1.0.0' },
+28 silly publish   peerDependencies: { 'generator-mocha': '>=0.1.3', yo: '>=1.0.0' },
+28 silly publish   devDependencies: { mocha: '*' },
+28 silly publish   engines: { node: '>=0.10.0', npm: '>=1.2.10' },
+28 silly publish   licenses: [ { type: 'BSD' } ],
+28 silly publish   readme: 'ERROR: No README data found!',
+28 silly publish   readmeFilename: 'readme.md',
+28 silly publish   _id: 'generator-polymerElements@0.0.1',
+28 silly publish   _from: '.',
+28 silly publish   gitHead: 'c7786bd52d10a6ae3c6a5e2e876148f37b6b0bff',
+28 silly publish   _shasum: 'a772b0c6072c5322e4a5d7714110537f5ed27dd6' }
+29 verbose request where is /generator-polymerElements
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id ecb676df7776c587
+32 verbose url raw /generator-polymerElements
+33 verbose url resolving [ 'https://registry.npmjs.org/', './generator-polymerElements' ]
+34 verbose url resolved https://registry.npmjs.org/generator-polymerElements
+35 verbose request where is https://registry.npmjs.org/generator-polymerElements
+36 info trying registry request attempt 1 at 14:36:23
+37 http PUT https://registry.npmjs.org/generator-polymerElements
+38 http 403 https://registry.npmjs.org/generator-polymerElements
+39 verbose headers { date: 'Sun, 09 Nov 2014 13:36:25 GMT',
+39 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+39 verbose headers   'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=60',
+39 verbose headers   'content-length': '76',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   'x-served-by': 'cache-fra1231-FRA',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1415540184.555429,VS0,VE824',
+39 verbose headers   'keep-alive': 'timeout=10, max=50',
+39 verbose headers   connection: 'Keep-Alive' }
+40 error publish Failed PUT 403
+41 error Error: forbidden New packages must have all-lowercase names: generator-polymerElements
+41 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+41 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+41 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
+41 error     at Request.emit (events.js:98:17)
+41 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+41 error     at Request.emit (events.js:117:20)
+41 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+41 error     at IncomingMessage.emit (events.js:117:20)
+41 error     at _stream_readable.js:943:16
+41 error     at process._tickCallback (node.js:419:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Darwin 14.0.0
+44 error command "node" "/usr/local/bin/npm" "publish"
+45 error cwd /Users/medianet/Documents/generator-polymerElement
+46 error node -v v0.10.33
+47 error npm -v 1.4.28
+48 verbose exit [ 1, true ]
