@@ -34,7 +34,7 @@ module.exports = yeoman.generators.Base.extend({
 
     if (this.elementName.indexOf('-') === -1) {
       console.error('Element name must contain a dash "-"');
-      console.error('ex: yo polymer:el my-element');
+      console.error('ex: yo polymer my-element');
       return;
     }
 
@@ -52,7 +52,7 @@ module.exports = yeoman.generators.Base.extend({
     elSrc = path.join(this.elementName+'/src',this.elementName);
     pathToElSrc = path.join('app/elements', elSrc);
 
-    this.template('_element.html', pathToElSrc + '.html');
+    this.template('_element.jade', pathToElSrc + '.jade');
     this.template('_element.css', pathToElSrc + '.scss');
     this.template('_element.js', pathToElSrc + '.js');
 

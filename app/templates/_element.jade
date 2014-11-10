@@ -1,0 +1,9 @@
+link(rel='import', href='../../../bower_components/polymer/polymer.html')
+
+polymer-element(name='name=<%= elementName %>')
+  template
+    link(rel='stylesheet', href='<%= elementName %>')
+    h1 This element has a ready() method.
+    span#el Not ready...
+    include ../../../templates/foot.jade
+  script(src="<%= elementName %>.js")
