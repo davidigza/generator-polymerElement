@@ -21,19 +21,19 @@
 }
 
 #el{
+  @include breakpoint(mobileonly) {
+    color: black;
+  }
   @include breakpoint(phablet) {
     color: red;
-  }
-  @include breakpoint(laptop) {
-    color: blue;
   }
   @include breakpoint(tablet) {
     color: green;
   }
-  @include breakpoint(mobileonly) {
-    color: black;
-  }
   @include breakpoint(desktop) {
-    color:white;
+    color: white;
+  }
+  @include breakpoint(laptop) {
+    color: blue;
   }
 }

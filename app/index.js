@@ -48,6 +48,7 @@ module.exports = yeoman.generators.Base.extend({
     var pathToEl = path.join('app/elements', el);
 
     this.template('_elementf.html', pathToEl + '-test.html');
+    this.template('_element.json', pathToEl + '.json');
 
     elSrc = path.join(this.elementName+'/src',this.elementName);
     pathToElSrc = path.join('app/elements', elSrc);
