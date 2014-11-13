@@ -19,27 +19,27 @@
 7 verbose parsed url   href: '.' }
 8 silly lockFile 3a52ce78- .
 9 verbose lock . /Users/medianet/.npm/3a52ce78-.lock
-10 verbose tar pack [ '/Users/medianet/.npm/generator-polymerelements/0.0.5/package.tgz',
+10 verbose tar pack [ '/Users/medianet/.npm/generator-polymerelements/0.0.6/package.tgz',
 10 verbose tar pack   '.' ]
-11 verbose tarball /Users/medianet/.npm/generator-polymerelements/0.0.5/package.tgz
+11 verbose tarball /Users/medianet/.npm/generator-polymerelements/0.0.6/package.tgz
 12 verbose folder .
-13 info prepublish generator-polymerelements@0.0.5
+13 info prepublish generator-polymerelements@0.0.6
 14 silly lockFile 1f1177db-tar tar://.
 15 verbose lock tar://. /Users/medianet/.npm/1f1177db-tar.lock
-16 silly lockFile 0decb1d5-olymerelements-0-0-5-package-tgz tar:///Users/medianet/.npm/generator-polymerelements/0.0.5/package.tgz
-17 verbose lock tar:///Users/medianet/.npm/generator-polymerelements/0.0.5/package.tgz /Users/medianet/.npm/0decb1d5-olymerelements-0-0-5-package-tgz.lock
+16 silly lockFile 17ff9b47-olymerelements-0-0-6-package-tgz tar:///Users/medianet/.npm/generator-polymerelements/0.0.6/package.tgz
+17 verbose lock tar:///Users/medianet/.npm/generator-polymerelements/0.0.6/package.tgz /Users/medianet/.npm/17ff9b47-olymerelements-0-0-6-package-tgz.lock
 18 silly lockFile 1f1177db-tar tar://.
 19 silly lockFile 1f1177db-tar tar://.
-20 silly lockFile 0decb1d5-olymerelements-0-0-5-package-tgz tar:///Users/medianet/.npm/generator-polymerelements/0.0.5/package.tgz
-21 silly lockFile 0decb1d5-olymerelements-0-0-5-package-tgz tar:///Users/medianet/.npm/generator-polymerelements/0.0.5/package.tgz
-22 silly lockFile 7782fbd1-or-polymerelements-0-0-5-package /Users/medianet/.npm/generator-polymerelements/0.0.5/package
-23 verbose lock /Users/medianet/.npm/generator-polymerelements/0.0.5/package /Users/medianet/.npm/7782fbd1-or-polymerelements-0-0-5-package.lock
-24 silly lockFile 7782fbd1-or-polymerelements-0-0-5-package /Users/medianet/.npm/generator-polymerelements/0.0.5/package
-25 silly lockFile 7782fbd1-or-polymerelements-0-0-5-package /Users/medianet/.npm/generator-polymerelements/0.0.5/package
+20 silly lockFile 17ff9b47-olymerelements-0-0-6-package-tgz tar:///Users/medianet/.npm/generator-polymerelements/0.0.6/package.tgz
+21 silly lockFile 17ff9b47-olymerelements-0-0-6-package-tgz tar:///Users/medianet/.npm/generator-polymerelements/0.0.6/package.tgz
+22 silly lockFile ee5c2e86-or-polymerelements-0-0-6-package /Users/medianet/.npm/generator-polymerelements/0.0.6/package
+23 verbose lock /Users/medianet/.npm/generator-polymerelements/0.0.6/package /Users/medianet/.npm/ee5c2e86-or-polymerelements-0-0-6-package.lock
+24 silly lockFile ee5c2e86-or-polymerelements-0-0-6-package /Users/medianet/.npm/generator-polymerelements/0.0.6/package
+25 silly lockFile ee5c2e86-or-polymerelements-0-0-6-package /Users/medianet/.npm/generator-polymerelements/0.0.6/package
 26 silly lockFile 3a52ce78- .
 27 silly lockFile 3a52ce78- .
 28 silly publish { name: 'generator-polymerelements',
-28 silly publish   version: '0.0.5',
+28 silly publish   version: '0.0.6',
 28 silly publish   description: 'Yeoman generator for Polymer Elements',
 28 silly publish   keywords: [ 'yeoman-generator', 'scaffold', 'framework', 'mvc', 'polymer' ],
 28 silly publish   homepage: 'https://github.com/davidigza/generator-polymerElement',
@@ -64,37 +64,37 @@
 28 silly publish   licenses: [ { type: 'BSD' } ],
 28 silly publish   readme: 'ERROR: No README data found!',
 28 silly publish   readmeFilename: 'readme.md',
-28 silly publish   _id: 'generator-polymerelements@0.0.5',
+28 silly publish   _id: 'generator-polymerelements@0.0.6',
 28 silly publish   _from: '.',
-28 silly publish   gitHead: 'db6a101ea0361c51b8526aa63362ad8fbc2f3a1e',
-28 silly publish   _shasum: '9b3150e83b7a95160c6ecf65a1807e4a60ec8d0f' }
+28 silly publish   gitHead: 'dc0836593df3ad5b2f31f27483a29772915d90ef',
+28 silly publish   _shasum: '2a6cb989f18d635877fa1e23c63275ddce5cef40' }
 29 verbose request where is /generator-polymerelements
 30 verbose request registry https://registry.npmjs.org/
-31 verbose request id c6b909aa5952dee7
+31 verbose request id 70426e6ab555cf92
 32 verbose url raw /generator-polymerelements
 33 verbose url resolving [ 'https://registry.npmjs.org/', './generator-polymerelements' ]
 34 verbose url resolved https://registry.npmjs.org/generator-polymerelements
 35 verbose request where is https://registry.npmjs.org/generator-polymerelements
-36 info trying registry request attempt 1 at 12:24:30
+36 info trying registry request attempt 1 at 12:52:11
 37 http PUT https://registry.npmjs.org/generator-polymerelements
 38 http 403 https://registry.npmjs.org/generator-polymerelements
-39 verbose headers { date: 'Thu, 13 Nov 2014 11:24:32 GMT',
+39 verbose headers { date: 'Thu, 13 Nov 2014 11:52:11 GMT',
 39 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
 39 verbose headers   'content-type': 'application/json',
 39 verbose headers   'cache-control': 'max-age=60',
 39 verbose headers   'content-length': '3102',
 39 verbose headers   'accept-ranges': 'bytes',
 39 verbose headers   via: '1.1 varnish',
-39 verbose headers   'x-served-by': 'cache-lcy1130-LCY',
+39 verbose headers   'x-served-by': 'cache-lcy1134-LCY',
 39 verbose headers   'x-cache': 'MISS',
 39 verbose headers   'x-cache-hits': '0',
-39 verbose headers   'x-timer': 'S1415877871.500510,VS0,VE586',
+39 verbose headers   'x-timer': 'S1415879531.496076,VS0,VE299',
 39 verbose headers   'keep-alive': 'timeout=10, max=50',
 39 verbose headers   connection: 'Keep-Alive' }
 40 error publish Failed PUT 403
-41 error Error: forbidden cannot modify pre-existing version: 0.0.5
-41 error old={"name":"generator-polymerelements","version":"0.0.5","description":"Yeoman generator for Polymer Elements","keywords":["yeoman-generator","scaffold","framework","mvc","polymer"],"homepage":"https://github.com/davidigza/generator-polymerElement","bugs":{"url":"https://github.com/davidigza/generator-polymerElement/issues"},"author":"","main":"app/index.js","repository":{"type":"git","url":"git://github.com/davidigza/generator-polymerElement.git"},"scripts":{"test":"mocha --reporter spec"},"dependencies":{"chalk":"^0.5.1","lodash":"^2.4.1","ncp":"^0.6.0","rimraf":"^2.2.8","underscore.string":"^2.3.3","yeoman-generator":"^0.17.2","yosay":"^1.0.0"},"peerDependencies":{"generator-mocha":">=0.1.3","yo":">=1.0.0"},"devDependencies":{"mocha":"*"},"engines":{"node":">=0.10.0","npm":">=1.2.10"},"licenses":[{"type":"BSD"}],"_id":"generator-polymerelements@0.0.5","_from":".","gitHead":"68c0b3f1aa39f1dedefa94c6d0405ecc1a6df152","_shasum":"8ae6e012a44f81c7100fb0dc312d0a125c02be83","_npmVersion":"1.4.28","_npmUser":{"name":"davidigza","email":"david.igza@gmail.com"},"maintainers":[{"name":"davidigza","email":"david.igza@gmail.com"}],"dist":{"shasum":"8ae6e012a44f81c7100fb0dc312d0a125c02be83","tarball":"http://registry.npmjs.org/generator-polymerelements/-/generator-polymerelements-0.0.5.tgz"}}
-41 error new={"name":"generator-polymerelements","version":"0.0.5","description":"Yeoman generator for Polymer Elements","keywords":["yeoman-generator","scaffold","framework","mvc","polymer"],"homepage":"https://github.com/davidigza/generator-polymerElement","bugs":{"url":"https://github.com/davidigza/generator-polymerElement/issues"},"author":"","main":"app/index.js","repository":{"type":"git","url":"git://github.com/davidigza/generator-polymerElement.git"},"scripts":{"test":"mocha --reporter spec"},"dependencies":{"chalk":"^0.5.1","lodash":"^2.4.1","ncp":"^0.6.0","rimraf":"^2.2.8","underscore.string":"^2.3.3","yeoman-generator":"^0.17.2","yosay":"^1.0.0"},"peerDependencies":{"generator-mocha":">=0.1.3","yo":">=1.0.0"},"devDependencies":{"mocha":"*"},"engines":{"node":">=0.10.0","npm":">=1.2.10"},"licenses":[{"type":"BSD"}],"readme":"ERROR: No README data found!","readmeFilename":"readme.md","_id":"generator-polymerelements@0.0.5","_from":".","gitHead":"db6a101ea0361c51b8526aa63362ad8fbc2f3a1e","_shasum":"9b3150e83b7a95160c6ecf65a1807e4a60ec8d0f","_npmVersion":"1.4.28","_npmUser":{"name":"davidigza","email":"david.igza@gmail.com"},"maintainers":[{"name":"davidigza","email":"david.igza@gmail.com"}],"dist":{"shasum":"9b3150e83b7a95160c6ecf65a1807e4a60ec8d0f","tarball":"http://registry.npmjs.org/generator-polymerelements/-/generator-polymerelements-0.0.5.tgz"}}: generator-polymerelements
+41 error Error: forbidden cannot modify pre-existing version: 0.0.6
+41 error old={"name":"generator-polymerelements","version":"0.0.6","description":"Yeoman generator for Polymer Elements","keywords":["yeoman-generator","scaffold","framework","mvc","polymer"],"homepage":"https://github.com/davidigza/generator-polymerElement","bugs":{"url":"https://github.com/davidigza/generator-polymerElement/issues"},"author":"","main":"app/index.js","repository":{"type":"git","url":"git://github.com/davidigza/generator-polymerElement.git"},"scripts":{"test":"mocha --reporter spec"},"dependencies":{"chalk":"^0.5.1","lodash":"^2.4.1","ncp":"^0.6.0","rimraf":"^2.2.8","underscore.string":"^2.3.3","yeoman-generator":"^0.17.2","yosay":"^1.0.0"},"peerDependencies":{"generator-mocha":">=0.1.3","yo":">=1.0.0"},"devDependencies":{"mocha":"*"},"engines":{"node":">=0.10.0","npm":">=1.2.10"},"licenses":[{"type":"BSD"}],"_id":"generator-polymerelements@0.0.6","_from":".","gitHead":"db6a101ea0361c51b8526aa63362ad8fbc2f3a1e","_shasum":"5b871a592a16568518c99b077447043b36546a3b","_npmVersion":"1.4.28","_npmUser":{"name":"davidigza","email":"david.igza@gmail.com"},"maintainers":[{"name":"davidigza","email":"david.igza@gmail.com"}],"dist":{"shasum":"5b871a592a16568518c99b077447043b36546a3b","tarball":"http://registry.npmjs.org/generator-polymerelements/-/generator-polymerelements-0.0.6.tgz"}}
+41 error new={"name":"generator-polymerelements","version":"0.0.6","description":"Yeoman generator for Polymer Elements","keywords":["yeoman-generator","scaffold","framework","mvc","polymer"],"homepage":"https://github.com/davidigza/generator-polymerElement","bugs":{"url":"https://github.com/davidigza/generator-polymerElement/issues"},"author":"","main":"app/index.js","repository":{"type":"git","url":"git://github.com/davidigza/generator-polymerElement.git"},"scripts":{"test":"mocha --reporter spec"},"dependencies":{"chalk":"^0.5.1","lodash":"^2.4.1","ncp":"^0.6.0","rimraf":"^2.2.8","underscore.string":"^2.3.3","yeoman-generator":"^0.17.2","yosay":"^1.0.0"},"peerDependencies":{"generator-mocha":">=0.1.3","yo":">=1.0.0"},"devDependencies":{"mocha":"*"},"engines":{"node":">=0.10.0","npm":">=1.2.10"},"licenses":[{"type":"BSD"}],"readme":"ERROR: No README data found!","readmeFilename":"readme.md","_id":"generator-polymerelements@0.0.6","_from":".","gitHead":"dc0836593df3ad5b2f31f27483a29772915d90ef","_shasum":"2a6cb989f18d635877fa1e23c63275ddce5cef40","_npmVersion":"1.4.28","_npmUser":{"name":"davidigza","email":"david.igza@gmail.com"},"maintainers":[{"name":"davidigza","email":"david.igza@gmail.com"}],"dist":{"shasum":"2a6cb989f18d635877fa1e23c63275ddce5cef40","tarball":"http://registry.npmjs.org/generator-polymerelements/-/generator-polymerelements-0.0.6.tgz"}}: generator-polymerelements
 41 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
 41 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
 41 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
