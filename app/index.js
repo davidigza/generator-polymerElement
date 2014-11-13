@@ -47,14 +47,14 @@ module.exports = yeoman.generators.Base.extend({
 
     var pathToEl = path.join('app/elements', el);
 
-    this.template('_elementf.html', pathToEl + '-test.html');
+    this.template('_elementf.jade', pathToEl + '-test.jade');
     this.template('_element.json', pathToEl + '.json');
 
     elSrc = path.join(this.elementName+'/src',this.elementName);
     pathToElSrc = path.join('app/elements', elSrc);
 
     this.template('_element.jade', pathToElSrc + '.jade');
-    this.template('_element.css', pathToElSrc + '.scss');
+    this.template('_element.sass', pathToElSrc + '.sass');
     this.template('_element.js', pathToElSrc + '.js');
 
 
