@@ -54,7 +54,7 @@ module.exports = yeoman.generators.Base.extend({
     pathToElSrc = path.join('app/elements', elSrc);
 
     this.template('_element.jade', pathToElSrc + '.jade');
-    this.template('_element.css', pathToElSrc + '.scss');
+    this.template('_element.sass', pathToElSrc + '.scss');
     this.template('_element.js', pathToElSrc + '.js');
 
 
