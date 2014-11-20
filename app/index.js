@@ -47,13 +47,13 @@ module.exports = yeoman.generators.Base.extend({
 
     var pathToEl = path.join('app/elements', el);
 
-    this.template('_elementf.jade', pathToEl + '-test.jade');
+    this.template('_elementf.html', pathToEl + '-test.html');
     this.template('_element.json', pathToEl + '.json');
 
     elSrc = path.join(this.elementName+'/src',this.elementName);
     pathToElSrc = path.join('app/elements', elSrc);
 
-    this.template('_element.jade', pathToElSrc + '.jade');
+    this.template('_element.html', pathToElSrc + '.html');
     this.template('_element.scss', pathToElSrc + '.scss');
     this.template('_element.js', pathToElSrc + '.js');
 
@@ -61,7 +61,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Wire up the dependency in elements.html
     var file = this.readFileAsString('app/elements/elements.html');
-    file += '<link rel="import" href="' + elSrc + '.html">\n';
+    file += 'link(rel="import", href="' + elSrc + '.html">\n';
     this.writeFileFromString(file, 'app/elements/elements.html');
 
   }
