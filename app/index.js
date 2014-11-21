@@ -28,13 +28,13 @@ module.exports = yeoman.generators.Base.extend({
     this.elementName = this.args[0];
     if (!this.elementName) {
       console.error('Element name required');
-      console.error('ex: yo polymer my-element');
+      console.error('ex: yo polymerelement my-element');
       return;
     }
 
     if (this.elementName.indexOf('-') === -1) {
       console.error('Element name must contain a dash "-"');
-      console.error('ex: yo polymer my-element');
+      console.error('ex: yo polymerelement my-element');
       return;
     }
 
