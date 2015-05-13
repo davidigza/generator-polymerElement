@@ -16,7 +16,7 @@
    "author": {
      "name": ""
    },
-   "main": "app/index.js",
+   "main": "pgevolution/login.js",
    "repository": {
      "type": "git",
      "url": "git://github.com/davidigza/generator-polymerElement.git"

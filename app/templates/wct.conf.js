@@ -1,4 +1,4 @@
 module.exports = {
-  root: 'app',
+  root: 'pgevolution',
   suites: ['test']
 };
