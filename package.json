@@ -1,6 +1,6 @@
 {
-  "name": "generator-polymer",
-  "version": "0.7.2",
+  "name": "generator-polymerelement",
+  "version": "1.0.0",
   "description": "Scaffold out a Polymer project",
   "keywords": [
     "yeoman-generator",
@@ -9,11 +9,17 @@
     "mvc",
     "polymer"
   ],
-  "author": "Chrome Developer Relations",
-  "main": "app/index.js",
-  "repository": "yeoman/generator-polymer",
-  "scripts": {
-    "test": "jshint {app,el,gh,seed}/*.js && mocha --reporter spec"
+  "homepage": "https://github.com/davidigza/generator-polymerElement",
+   "bugs": {
+     "url": "https://github.com/davidigza/generator-polymerElement/issues"
+   },
+   "author": {
+     "name": ""
+   },
+   "main": "app/index.js",
+   "repository": {
+     "type": "git",
+     "url": "git://github.com/davidigza/generator-polymerElement.git"
   },
   "dependencies": {
     "chalk": "^1.0.0",
