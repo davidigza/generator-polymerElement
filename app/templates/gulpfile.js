@@ -160,8 +160,9 @@ gulp.task('serve', ['styles', 'components'], function () {
     server: {
       baseDir: ['.tmp', 'pgevolution'],
       routes: {
-        '/bower_components': 'bower_components'
-      }
+        '/components': 'components'
+      },
+      index: 'login.html'
     }
   });
 
