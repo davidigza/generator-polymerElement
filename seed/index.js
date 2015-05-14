@@ -46,9 +46,6 @@ module.exports = yeoman.generators.Base.extend({
     this.log(yosay('Out of the box I follow the seed-element pattern.'));
 
     var prompts = [{
-        name: 'ghUser',
-        message: 'What is your GitHub username?'
-      }, {
         name: 'includeWCT',
         message: 'Would you like to include web-component-tester?',
         type: 'confirm'
@@ -56,15 +53,7 @@ module.exports = yeoman.generators.Base.extend({
     ];
 
     this.prompt(prompts, function (props) {
-      this.ghUser = props.ghUser;
       this.includeWCT = props.includeWCT;
-
-      // Save user's GitHub name for when they want to use gh subgenerator
-      this.config.set({
-        ghUser: this.ghUser
-      });
-      this.config.save();
-
       done();
     }.bind(this));
 
@@ -73,6 +62,8 @@ module.exports = yeoman.generators.Base.extend({
     // Construct the element as a subdirectory.
     this.destinationRoot(this.elementName);
 
+    this.log(yosay('Seed generator'));
+
     this.copy('gitignore', '.gitignore');
     this.copy('gitattributes', '.gitattributes');
     this.copy('bowerrc', '.bowerrc');
@@ -80,6 +71,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('jshintrc', '.jshintrc');
     this.copy('editorconfig', '.editorconfig');
     this.template('seed-element.html', this.elementName + '.html');
+    this.template('seed-element.scss', this.elementName + '.scss');
     this.template('index.html', 'index.html');
     this.template('demo/index.html', 'demo/index.html');
     this.template('README.md', 'README.md');

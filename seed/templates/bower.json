@@ -9,12 +9,6 @@
     "polymer"
   ],
   "main": "<%= elementName %>.html",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/<%= ghUser %>/<%= elementName %>"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/<%= ghUser %>/<%= elementName %>/",
   "ignore": [
     "/.*",
     "/test/",
