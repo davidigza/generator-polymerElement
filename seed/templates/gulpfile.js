@@ -25,9 +25,8 @@ var AUTOPREFIXER_BROWSERS = [
 
 var styleTask = function (stylesPath, srcs) {
   return gulp.src(srcs.map(function(src) {
-      return path.join('.', stylesPath, src);
+      return path.join('./', stylesPath, src);
     }))
-    .pipe($.changed(stylesPath, {extension: '.scss'}))
     .pipe($.rubySass({
         style: 'expanded',
         precision: 10
@@ -35,15 +34,15 @@ var styleTask = function (stylesPath, srcs) {
       .on('error', console.error.bind(console))
     )
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('.' + stylesPath))
+    .pipe(gulp.dest('./' + stylesPath))
     .pipe($.if('*.css', $.cssmin()))
-    .pipe(gulp.dest('.' + stylesPath))
+    .pipe(gulp.dest('./' + stylesPath))
     .pipe($.size({title: stylesPath}));
 };
 
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
-  return styleTask('styles', ['*.css', '*.scss']);
+  return styleTask('/', ['*.scss']);
 });
 
 gulp.task('components', function () {
@@ -53,9 +52,7 @@ gulp.task('components', function () {
 // Lint JavaScript
 gulp.task('jshint', function () {
   return gulp.src([
-      '**/*.js',
-      '*.html',
-      '**/*.html'
+      '*.html'
     ])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint.extract()) // Extract JS from .html files
@@ -74,11 +71,11 @@ gulp.task('serve', ['styles', 'components'], function () {
     //       will present a certificate warning in the browser.
     // https: true,
     server: {
-      baseDir: ['.'],
+      baseDir: [''],
       routes: {
         'bower_components': 'bower_components'
       },
-      index: 'index.html'
+      index: 'demo/index.html'
     }
   });
 

@@ -79,8 +79,11 @@ module.exports = yeoman.generators.Base.extend({
     this.template('README.md', 'README.md');
     if (this.includeWCT) {
       this.template('test/index.html', 'test/index.html');
+      this.template('test/basic-test.html', 'test/basic-test.html');
+      this.template('test/tests.html', 'test/tests.html');
       this.template('test/seed-element-basic.html',
                     'test/' + this.elementName + '-basic.html');
+
     }
   },
   install: function () {
