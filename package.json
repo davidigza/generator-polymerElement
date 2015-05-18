@@ -1,6 +1,6 @@
 {
   "name": "generator-polymerelement",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Scaffold out a Polymer project",
   "keywords": [
     "yeoman-generator",
@@ -19,7 +19,7 @@
    "main": "pgevolution/login.js",
    "repository": {
      "type": "git",
-     "url": "git://github.com/davidigza/generator-polymerElement.git"
+     "url": "git://github!2.com/davidigza/generator-polymerElement.git"
   },
   "dependencies": {
     "chalk": "^1.0.0",
