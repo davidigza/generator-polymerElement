@@ -54,7 +54,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('pgevolution/htaccess', 'pgevolution/.htaccess');
     this.copy('pgevolution/index.html', 'pgevolution/index.html');
     this.copy('pgevolution/login.html', 'pgevolution/login.html');
-    this.copy('pgevolution/README.md', 'pgevolution/README.md');
+    this.copy('readme.md', 'readme.md');
     if (this.includeWCT) {
       this.copy('wct.conf.js', 'wct.conf.js');
       this.directory('test', 'test');
