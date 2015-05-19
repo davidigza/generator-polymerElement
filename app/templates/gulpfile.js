@@ -12,6 +12,7 @@ var merge = require('merge-stream');
 var path = require('path');
 var util = require('gulp-util');
 var gulpif = require('gulp-if');
+var replace = require('gulp-replace');
 var isNotAutoLogin = function() {
   return !(util.env.user && util.env.pass);
 };
@@ -203,11 +204,11 @@ gulp.task('default', ['clean'], function (cb) {
 
 //replace in index.html
 gulp.task('buildIndex', function () {
-  return gulp.src('pgevolution/index.html')
+  return gulp.src('pgevolution/_index.html')
     .pipe(gulpif(isNotAutoLogin,
       replace(/\/\*LOGIN_START\b\*\/((.|[\r\n])*?)\/\*LOGIN_END\b\*\//g, '')
     ))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('pgevolution/'));
 });
 
 
