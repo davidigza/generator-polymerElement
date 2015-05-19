@@ -10,6 +10,11 @@ var pagespeed = require('psi');
 var reload = browserSync.reload;
 var merge = require('merge-stream');
 var path = require('path');
+var util = require('gulp-util');
+var gulpif = require('gulp-if');
+var isNotAutoLogin = function() {
+  return !(util.env.user && util.env.pass);
+};
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -150,7 +155,7 @@ gulp.task('vulcanize', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles', 'components'], function () {
+gulp.task('serve', ['styles', 'components', 'buildIndex'], function () {
   browserSync({
     notify: false,
     // Run as an https by uncommenting 'https: true'
@@ -188,12 +193,24 @@ gulp.task('serve:dist', ['default'], function () {
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
   runSequence(
+    ['buildIndex'],
     ['copy', 'styles'],
     'components',
     ['jshint', 'images', 'fonts', 'html'],
     'vulcanize',
     cb);
 });
+
+//replace in index.html
+gulp.task('buildIndex', function () {
+  return gulp.src('pgevolution/index.html')
+    .pipe(gulpif(isNotAutoLogin,
+      replace(/\/\*LOGIN_START\b\*\/((.|[\r\n])*?)\/\*LOGIN_END\b\*\//g, '')
+    ))
+    .pipe(gulp.dest('./'));
+});
+
+
 
 // Run PageSpeed Insights
 // Update `url` below to the public URL for your site

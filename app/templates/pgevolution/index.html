@@ -1,20 +1,3 @@
-<!--
-**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
--->
 <!doctype html>
 <html lang="">
 
@@ -23,29 +6,38 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-  <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
-  <!-- endbuild-->
-
-  <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
-  <script src="components/webcomponentsjs/webcomponents-lite.js"></script>
-  <!-- endbuild -->
-
-  <!-- will be replaced with elements/elements.vulcanized.html -->
-  <!-- endreplace-->
+  <script src="components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="components/polymer/polymer.html">
+  <link rel="import" href="components/bbva-core/bbva-core.html">
 </head>
 
 <body unresolved fullbleed layout vertical>
   <template is="x-autobind" id="app">
-
+    <bbva-core></bbva-core>
 
   </template>
-
-  <!-- build:js scripts/app.js -->
   <script src="scripts/pgevolution.js"></script>
-  <!-- endbuild-->
+
+  /*LOGIN_START*/ //do not change, it will be replaced in production
+  <script src="scripts/config.js"></script>
+  <script src="scripts/loginLib.js"></script>
+  <script>
+  if(PolymerApp.LoginLib && PolymerApp.config.LOGIN.autologin) {
+    PolymerApp.LoginLib.doLogin(PolymerApp.config.LOGIN.user,
+      PolymerApp.config.LOGIN.pass)
+      .then(function() {
+        console.log('Login OK!!');
+        PolymerApp.init();
+      }, function(err) {
+        console.log('Login Error!!');
+      });
+  } else {
+    //redirect to login
+  }
+  </script>
+  /*LOGIN_END*/
+
 </body>
 
 </html>

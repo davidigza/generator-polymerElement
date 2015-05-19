@@ -2,6 +2,7 @@
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
   "dependencies": {
+    "bbva-core" : "https://descinet.bbva.es/stash/scm/pgev/bbva-core.git#master"
   },
   "devDependencies": {<% if (includeWCT) { %>
     "web-component-tester": "Polymer/web-component-tester#master",

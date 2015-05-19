@@ -51,6 +51,8 @@ module.exports = yeoman.generators.Base.extend({
     this.template('pgevolution/404.html');
     this.copy('pgevolution/styles/main.css', 'pgevolution/styles/main.css');
     this.copy('pgevolution/scripts/pgevolution.js', 'pgevolution/scripts/pgevolution.js');
+    this.copy('pgevolution/scripts/config.js', 'pgevolution/scripts/config.js');
+    this.copy('pgevolution/scripts/loginLib.js', 'pgevolution/scripts/loginLib.js');
     this.copy('pgevolution/htaccess', 'pgevolution/.htaccess');
     this.copy('pgevolution/index.html', 'pgevolution/index.html');
     this.copy('pgevolution/login.html', 'pgevolution/login.html');

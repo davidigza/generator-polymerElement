@@ -1,6 +1,6 @@
 {
   "name": "generator-polymerelement",
-  "version": "1.0.94",
+  "version": "1.0.95",
   "description": "Scaffold out a Polymer project",
   "keywords": [
     "yeoman-generator",
