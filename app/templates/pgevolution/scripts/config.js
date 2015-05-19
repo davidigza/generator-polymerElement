@@ -16,5 +16,5 @@ PolymerApp.config = {
     autologin: 'autologin_value', //varible entornos
     user: 'user_value',//varible entornos
     pass: 'pass_value' //varible entornos
-  },
+  }
 };

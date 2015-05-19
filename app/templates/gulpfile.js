@@ -12,10 +12,30 @@ var merge = require('merge-stream');
 var path = require('path');
 var util = require('gulp-util');
 var gulpif = require('gulp-if');
+var concat = require('gulp-concat');
 var replace = require('gulp-replace');
 var isNotAutoLogin = function() {
   return !(util.env.user && util.env.pass);
 };
+var environmentConf = {
+  'dev': {
+    'base_login_url': 'https://qa-bancamovil.grupobbva.com',
+    'sevices_url': '',
+    'back_core_url': ''
+  },
+  'pro': {
+    'base_login_url': 'https://bancamovil.grupobbva.com',
+    'sevices_url': '',
+    'back_core_url': ''
+  }
+};
+
+var scriptsList = [
+    'pgevolution/scripts/config.js',
+    'pgevolution/scripts/pgevolution.js'
+];
+
+var environment = 'dev';
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -156,7 +176,7 @@ gulp.task('vulcanize', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles', 'components', 'buildIndex'], function () {
+gulp.task('serve', ['styles', 'components', 'buildIndex', 'builCoreJS'], function () {
   browserSync({
     notify: false,
     // Run as an https by uncommenting 'https: true'
@@ -168,7 +188,7 @@ gulp.task('serve', ['styles', 'components', 'buildIndex'], function () {
       routes: {
         '/components': 'components'
       },
-      index: 'login.html'
+      index: (isNotAutoLogin())?'login.html':'index.html'
     }
   });
 
@@ -180,7 +200,7 @@ gulp.task('serve', ['styles', 'components', 'buildIndex'], function () {
 });
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function () {
+gulp.task('serve:dist', ['envConfig', 'default'], function () {
   browserSync({
     notify: false,
     // Run as an https by uncommenting 'https: true'
@@ -194,6 +214,7 @@ gulp.task('serve:dist', ['default'], function () {
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
   runSequence(
+    ['envConfig'],
     ['buildIndex'],
     ['copy', 'styles'],
     'components',
@@ -202,13 +223,37 @@ gulp.task('default', ['clean'], function (cb) {
     cb);
 });
 
+gulp.task('envConfig', function() {
+  //improve
+  environment = 'pro';
+});
+
 //replace in index.html
 gulp.task('buildIndex', function () {
-  return gulp.src('pgevolution/_index.html')
+  return gulp.src(['pgevolution/_index.html','scripts/config.js'])
     .pipe(gulpif(isNotAutoLogin,
       replace(/\/\*LOGIN_START\b\*\/((.|[\r\n])*?)\/\*LOGIN_END\b\*\//g, '')
     ))
     .pipe(gulp.dest('pgevolution/'));
+});
+
+gulp.task('builCoreJS', function () {
+  if(environment !== 'pro') {
+    scriptsList = scriptsList.concat('pgevolution/scripts/loginLib.js');
+  }
+  return gulp.src(scriptsList)
+    .pipe(concat('pgevolution-dist.js'))
+    .pipe(replace(/base_login_url/g, environmentConf[environment].base_login_url))
+    .pipe(replace(/autologin_value/g, function(){
+      return (util.env.user && util.env.pass)?'true':'false';
+    }))
+    .pipe(replace(/user_value/g, function(){
+      return (util.env.user)? ('' + util.env.user).replace(/[',", ]/g, '') || '':'';
+    }))
+    .pipe(replace(/pass_value/g, function() {
+      return (util.env.pass)? ('' + util.env.pass).replace(/[',", ]/g, '') || '' : '';
+    }))
+    .pipe(gulp.dest('pgevolution/scripts/'));
 });
 
 
