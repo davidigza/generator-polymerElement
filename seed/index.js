@@ -25,6 +25,14 @@ module.exports = yeoman.generators.Base.extend({
       defaults: false,
     });
   },
+  checkName: function (name){
+    if (name.toLowerCase().indexOf("provider") >= 0){
+      return"provider";
+    } else if (name.toLowerCase().indexOf("manager") >= 0){
+       return "manager";
+    }
+    return 'ui';
+  },
   validate: function () {
     this.elementName = this['element-name'];
     var result = elementNameValidator(this.elementName);
@@ -36,6 +44,8 @@ module.exports = yeoman.generators.Base.extend({
     if (result.message) {
       console.warn(chalk.yellow(result.message + '\n'));
     }
+
+    this.elementType = checkName(this.elementName);
 
     return true;
   },
@@ -62,9 +72,8 @@ module.exports = yeoman.generators.Base.extend({
     // Construct the element as a subdirectory.
     this.destinationRoot(this.elementName);
 
-    this.log(yosay('Seed generator'));
-
     this.copy('gitignore', '.gitignore');
+    this.copy('wct.conf.js', 'wct.conf.js');
     this.copy('gitattributes', '.gitattributes');
     this.copy('bowerrc', '.bowerrc');
     this.template('bower.json', 'bower.json');
@@ -72,23 +81,24 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('jshintrc', '.jshintrc');
     this.copy('gulpfile.js', 'gulpfile.js');
     this.copy('editorconfig', '.editorconfig');
-    this.template('seed-element.html', this.elementName + '.html');
-    this.template('seed-element.scss', this.elementName + '.scss');
+    if(this.elementType === 'provider'){
+      this.template('seed-element-provider.html', this.elementName + '.html');
+    } else if (this.elementType === 'manager'){
+      this.template('seed-element-manager.html', this.elementName + '.html');
+    } else {
+      this.template('seed-element.html', this.elementName + '.html');
+      this.template('seed-element.scss', this.elementName + '.scss');
+    }
     this.template('index.html', 'index.html');
     this.template('demo/index.html', 'demo/index.html');
     this.template('README.md', 'README.md');
     if (this.includeWCT) {
       this.template('test/index.html', 'test/index.html');
       this.template('test/basic-test.html', 'test/basic-test.html');
-      this.template('test/tests.html', 'test/tests.html');
-      this.template('test/seed-element-basic.html',
-                    'test/' + this.elementName + '-basic.html');
-
     }
   },
   install: function () {
     this.installDependencies({
-      npm: false,
       skipInstall: this.options['skip-install'],
       skipMessage: this.options['skip-install-message'],
     });
