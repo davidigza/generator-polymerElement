@@ -17,12 +17,11 @@
     <bbva-core></bbva-core>
 
   </template>
-  <script src="scripts/pgevolution.js"></script>
+  <script src="scripts/pgevolution-dist.js"></script>
 
-  /*LOGIN_START*/ //do not change, it will be replaced in production
-  <script src="scripts/config.js"></script>
-  <script src="scripts/loginLib.js"></script>
+
   <script>
+  /*LOGIN_START*/ //do not change, it will be replaced in production
   if(PolymerApp.LoginLib && PolymerApp.config.LOGIN.autologin) {
     PolymerApp.LoginLib.doLogin(PolymerApp.config.LOGIN.user,
       PolymerApp.config.LOGIN.pass)
@@ -35,8 +34,8 @@
   } else {
     //redirect to login
   }
-  </script>
   /*LOGIN_END*/
+  </script>
 
 </body>
 
