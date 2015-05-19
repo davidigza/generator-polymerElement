@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="components/polymer/polymer.html">
+  <link rel="import" href="components/bbva-core/bbva-core.html">
+</head>
+
+<body unresolved fullbleed layout vertical>
+  <template is="x-autobind" id="app">
+    <bbva-core></bbva-core>
+
+  </template>
+  <script src="scripts/pgevolution.js"></script>
+
+  /*LOGIN_START*/ //do not change, it will be replaced in production
+  <script src="scripts/config.js"></script>
+  <script src="scripts/loginLib.js"></script>
+  <script>
+  if(PolymerApp.LoginLib && PolymerApp.config.LOGIN.autologin) {
+    PolymerApp.LoginLib.doLogin(PolymerApp.config.LOGIN.user,
+      PolymerApp.config.LOGIN.pass)
+      .then(function() {
+        console.log('Login OK!!');
+        PolymerApp.init();
+      }, function(err) {
+        console.log('Login Error!!');
+      });
+  } else {
+    //redirect to login
+  }
+  </script>
+  /*LOGIN_END*/
+
+</body>
+
+</html>
