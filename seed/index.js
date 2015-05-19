@@ -26,10 +26,10 @@ module.exports = yeoman.generators.Base.extend({
     });
   },
   checkName: function (name){
-    if (name.toLowerCase().indexOf("provider") >= 0){
-      return"provider";
-    } else if (name.toLowerCase().indexOf("manager") >= 0){
-       return "manager";
+    if (name.toLowerCase().indexOf('provider') >= 0){
+      return 'provider';
+    } else if (name.toLowerCase().indexOf('manager') >= 0){
+       return 'manager';
     }
     return 'ui';
   },
@@ -45,7 +45,7 @@ module.exports = yeoman.generators.Base.extend({
       console.warn(chalk.yellow(result.message + '\n'));
     }
 
-    this.elementType = checkName(this.elementName);
+    this.elementType = this.checkName(this.elementName);
 
     return true;
   },
