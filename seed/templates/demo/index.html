@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title><%= elementName %> Demo</title>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/bbva-util-mocker/bbva-util-mocker.html"></script>
     <link rel="import" href="../<%= elementName %>.html">
   </head>
   <body>
@@ -13,14 +14,29 @@
 
     <button>Say Something</button>
 
-    <<%= elementName %> author='{"name": "Lord Meowser", "image": "http://placekitten.com/g/300/300"}' fancy>
+    <<%= elementName %> author='{"name": "Lord Meowser"}' fancy>
       <h2>Hello <%= elementName %></h2>
     </<%= elementName %>>
 
-    <script>
-      document.querySelector('button').addEventListener('click', function() {
-        alert(document.querySelector('<%= elementName %>').sayHello('Hallo!'));
-      });
+
+    <bbva-util-mocker component-name="<%= elementName %>"></bbva-util-mocker>
+
+  <script>
+
+    var mocker = document.querySelector("bbva-util-mocker");
+
+    // Config callbacks
+    mocker.config({
+      'say_hello': function(payload){
+        mocker.dispatch_publish_answer(mocker.mock.publish_answer);
+      },
+    })
+
+    document.querySelector('button').addEventListener('click', function() {
+      alert(document.querySelector('<%= elementName %>').sayHello('Hallo!'));
+    });
+
+
     </script>
 
   </body>

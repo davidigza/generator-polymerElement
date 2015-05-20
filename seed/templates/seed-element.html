@@ -16,10 +16,13 @@ Example:
     <h1>&lt;<%= elementName %>&gt;</h1>
     <content></content>
     <p class="author">
-      <img src="{{author.image}}">
       Cheers,<br/>
       <span class="name">{{author.name}}</span>
     </p>
+    <div>
+      <button on-click='sayHello' >Say Hello</button>&nbsp;
+      Answer: <label>{{answer}}</label>
+    </div>
   </template>
 
 </dom-module>
@@ -30,7 +33,22 @@ Example:
 
     is: '<%= elementName %>',
 
+    actionsIn: {
+      'publish_answer': 'updateContent'
+    },
+
+    actionsOut: ['say_hello'],
+
+
     properties: {
+      /**
+       * `Answer` indicates that the element has an answer,
+       * while checking its pocket watch.
+       */
+      answer: {
+        type: String,
+        value: ''
+      }
 
       /**
        * `fancy` indicates that the element should don a monocle and tophat,
@@ -55,12 +73,6 @@ Example:
         // We do that to ensure that each element gets its own copy of the
         // value, rather than having it shared across all instances (via the
         // prototype).
-        value: function() {
-          return {
-            name:  'Dimitri Glazkov',
-            image: 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg',
-          };
-        }
       },
 
     },
@@ -107,10 +119,9 @@ Example:
      * @param {string} greeting A positive greeting.
      * @return {string} The full greeting.
      */
-    sayHello: function(greeting) {
-      var response = greeting || 'Hello World!';
-      return '<%= elementName %> says, ' + response;
-    },
+     sayHello: function(evt) {
+       this.dispatch_say_hello("Hello!");
+     },
 
     /**
      * Attempts to destroy this element's enemies with an any beam of light!
@@ -118,8 +129,8 @@ Example:
      * Or, at least, dispatches an event in the vain hope that someone else will
      * do the zapping.
      */
-    fireLasers: function() {
-      this.fire('<%= elementName %>-lasers', {sound: 'Pew pew!'});
+     updateContent: function(payload) {
+       this.set('answer', payload.data);
     },
 
   });
