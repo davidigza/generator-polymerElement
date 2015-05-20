@@ -48,7 +48,7 @@ Example:
       answer: {
         type: String,
         value: ''
-      }
+      },
 
       /**
        * `fancy` indicates that the element should don a monocle and tophat,
@@ -73,6 +73,11 @@ Example:
         // We do that to ensure that each element gets its own copy of the
         // value, rather than having it shared across all instances (via the
         // prototype).
+        value: function() {
+          return {
+            name:  'Dimitri Glazkov'
+          };
+        }
       },
 
     },

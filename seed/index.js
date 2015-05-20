@@ -81,6 +81,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('jshintrc', '.jshintrc');
     this.copy('gulpfile.js', 'gulpfile.js');
     this.copy('editorconfig', '.editorconfig');
+    this.copy('mock.js','mock.js');
     if(this.elementType === 'provider'){
       this.template('seed-element-provider.html', this.elementName + '.html');
     } else if (this.elementType === 'manager'){
@@ -88,6 +89,7 @@ module.exports = yeoman.generators.Base.extend({
     } else {
       this.template('seed-element.html', this.elementName + '.html');
       this.template('seed-element.scss', this.elementName + '.scss');
+      this.template('demo/styles/main.scss', 'demo/styles/main.scss');
     }
     this.template('index.html', 'index.html');
     this.template('demo/index.html', 'demo/index.html');
