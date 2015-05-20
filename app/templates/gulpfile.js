@@ -230,7 +230,8 @@ gulp.task('envConfig', function() {
 
 //replace in index.html
 gulp.task('buildIndex', function () {
-  return gulp.src(['pgevolution/_index.html','scripts/config.js'])
+  return gulp.src('pgevolution/_index.html')
+    .pipe(concat('index.html'))
     .pipe(gulpif(isNotAutoLogin,
       replace(/\/\*LOGIN_START\b\*\/((.|[\r\n])*?)\/\*LOGIN_END\b\*\//g, '')
     ))
