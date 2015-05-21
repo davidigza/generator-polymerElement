@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title><%= elementName %> Demo</title>
+    <title><%= elementName %> Demo polymer</title>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../mock.js"></script>
     <link rel="import" href="../bower_components/polymer/polymer.html">
@@ -24,6 +24,11 @@
   <script>
 
     var mocker = document.querySelector("bbva-util-mocker");
+
+    // Setting initial attr
+    mocker.setComponentAttr({
+      'author': 'Luis Recio'
+    });
 
     // Config callbacks
     mocker.config({
