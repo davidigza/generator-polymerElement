@@ -10,6 +10,9 @@ var pagespeed = require('psi');
 var reload = browserSync.reload;
 var merge = require('merge-stream');
 var path = require('path');
+var sass = require('gulp-ruby-sass');
+var filter = require('gulp-filter');
+var filterCSS = filter('**/*.css');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -24,10 +27,7 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 var styleTask = function (stylesPath, srcs) {
-  return gulp.src(srcs.map(function(src) {
-      return path.join('./', stylesPath, src);
-    }))
-    .pipe($.rubySass({
+    return ($.rubySass('./',{
         style: 'expanded',
         precision: 10
       })
@@ -45,10 +45,6 @@ gulp.task('styles', function () {
   return styleTask('/', ['*.scss']);
 });
 
-gulp.task('components', function () {
-  return styleTask('components', ['**/*.css', '**/*.scss']);
-});
-
 // Lint JavaScript
 gulp.task('jshint', function () {
   return gulp.src([
@@ -63,7 +59,7 @@ gulp.task('jshint', function () {
 
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles', 'components'], function () {
+gulp.task('serve', ['styles'], function () {
   browserSync({
     notify: false,
     // Run as an https by uncommenting 'https: true'
