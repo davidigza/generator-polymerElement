@@ -33,7 +33,8 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2",
     "psi": "^1.0.4",
-    "gulp-util": "^3.0.4"
+    "gulp-util": "^3.0.4",
+    "chai-spies": "^0.6.0"
   },
   "engines": {
     "node": ">=0.10.0"
