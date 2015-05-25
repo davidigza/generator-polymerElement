@@ -17,11 +17,13 @@
     <<%= elementName %>></<%= elementName %>>
 
     <script>
-      var myEl =
+    suite('<<%= elementName %>>', function() {
+      var tag;
+      suiteSetup(function(){
+        tag = document.querySelector('<%= elementName %>');
+      });
 
       suite('<<%= elementName %>>', function() {
-
-        var tag = document.querySelector('<%= elementName %>');
 
         test('should be in the document', function() {
             expect(tag).to.not.be.undefined;
@@ -106,7 +108,7 @@
           });
       });
 
-      });
+    });
     </script>
 
   </body>
