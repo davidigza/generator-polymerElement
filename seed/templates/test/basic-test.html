@@ -17,19 +17,94 @@
     <<%= elementName %>></<%= elementName %>>
 
     <script>
-      var myEl = document.querySelector('<%= elementName %>');
+      var myEl =
 
       suite('<<%= elementName %>>', function() {
 
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Luis Recio');
+        var tag = document.querySelector('<%= elementName %>');
+
+        test('should be in the document', function() {
+            expect(tag).to.not.be.undefined;
         });
 
-        test('updateContent', function() {
-          var payload = {"data": "HI ALL!"};
-          myEl.updateContent(payload);
-          assert.equal(myEl.answer, "HI ALL!" );
+        test('should have answer property',function(){
+          expect(tag.properties).to.have.property('answer').that.is.an('Object');
+          assert.property(tag, 'answer');
         });
+        test('should have fancy property',function(){
+          expect(tag.properties).to.have.property('fancy');
+        });
+        test('should have author property',function(){
+          expect(tag.properties).to.have.property('author').that.is.an('Object');
+        });
+
+        test('should have sayHello method',function(){
+          expect(tag).to.have.property('sayHello').that.is.an('function');
+        });
+      });
+
+      suite('author property', function() {
+          var tagForAuthor;
+          setup(function() {
+            tagForAuthor = document.createElement('<%= elementName %>');
+          });
+
+          test('should be undefined if no value is supplied', function() {
+              expect(tagForAuthor.author).to.be.undefined;
+          });
+
+          test('value should not be in span if has an undefined value', function() {
+              var span = tagForAuthor.querySelector('.name');
+              assert.equal(span.innerHTML.trim(), '');
+          });
+
+          test('should have the supplied value', function() {
+            var value = {name:'Carol'};
+            tagForAuthor.set('author', value);
+            expect(tagForAuthor.author).to.equal(value);
+          });
+
+          test('value should be in span if has a supplied value', function() {
+              var value = {name:'Carol'};
+              var span = tagForAuthor.querySelector('.name');
+              tagForAuthor.set('author', value);
+              assert.equal(span.innerHTML.trim(), value.name);
+          });
+
+      });
+
+      suite('sayHello method', function(){
+          var button, sayHello, tagForAuthor;
+          setup(function() {
+            tagForAuthor = document.createElement('<%= elementName %>');
+            button = tagForAuthor.querySelector('button');
+          });
+
+          test('should be called once', function(){
+            var spy = chai.spy(function(){});
+            tagForAuthor.sayHello = spy;
+
+            button.click();
+            expect(tagForAuthor.sayHello).to.have.been.called.once;
+          });
+
+         test('should dispatch say hello', function(){
+            var spy =  chai.spy(function(data){});
+            tagForAuthor.dispatch_say_hello = spy;
+            var evt = ''; //window.event
+
+            tagForAuthor.sayHello(evt);
+            expect(tagForAuthor.dispatch_say_hello).to.have.been.called.once.with("Hello!");
+          });
+      });
+
+      suite('updateContent method', function(){
+          test('updateContent', function() {
+            var payload = {"data": "HI ALL!"};
+            tag.updateContent(payload);
+            assert.equal(tag.answer, "HI ALL!" );
+          });
+      });
 
       });
     </script>
