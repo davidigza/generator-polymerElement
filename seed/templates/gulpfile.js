@@ -11,8 +11,6 @@ var reload = browserSync.reload;
 var merge = require('merge-stream');
 var path = require('path');
 var sass = require('gulp-ruby-sass');
-var filter = require('gulp-filter');
-var filterCSS = filter('**/*.css');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
