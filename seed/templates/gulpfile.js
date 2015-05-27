@@ -32,8 +32,7 @@ gulp.task('styles', function () {
       console.error('Error!', err.message);
    })
    .pipe(sourcemaps.write())
-   .pipe(gulp.dest('result/'));
-  })
+   .pipe(gulp.dest('./'));
 });
 
 // Lint JavaScript

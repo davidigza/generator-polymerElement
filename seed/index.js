@@ -82,12 +82,12 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('editorconfig', '.editorconfig');
     this.copy('mock.js','mock.js');
     if(this.elementType === 'provider'){
-      this.template('seed-element-provider.html','component/' + this.elementName + '.html');
+      this.template('seed-element-provider.html',this.elementName + '.html');
     } else if (this.elementType === 'manager'){
-      this.template('seed-element-manager.html', 'component/' + this.elementName + '.html');
+      this.template('seed-element-manager.html',this.elementName + '.html');
     } else {
-      this.template('seed-element.html', 'component/' + this.elementName + '.html');
-      this.template('seed-element.scss', 'component/' + this.elementName + '.scss');
+      this.template('seed-element.html',this.elementName + '.html');
+      this.template('seed-element.scss',this.elementName + '.scss');
       this.template('demo/styles/main.scss', 'demo/styles/main.scss');
     }
     this.template('index.html', 'index.html');
