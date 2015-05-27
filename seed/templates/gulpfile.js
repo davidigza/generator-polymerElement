@@ -61,12 +61,12 @@ gulp.task('serve', ['styles'], function () {
       routes: {
         'bower_components': 'bower_components'
       },
-      index: 'demo/index.html'
+      index: 'index.html'
     }
   });
 
   gulp.watch(['*.html'], reload);
-  gulp.watch(['component/*.{scss}'], ['styles', reload]);
+  gulp.watch(['./*.{scss, css}'], ['styles', reload]);
   gulp.watch(['*.js'], ['jshint']);
 });
 
