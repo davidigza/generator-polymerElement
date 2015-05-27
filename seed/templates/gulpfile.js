@@ -11,6 +11,7 @@ var reload = browserSync.reload;
 var merge = require('merge-stream');
 var path = require('path');
 var sass = require('gulp-ruby-sass');
+var sourcemaps = require('gulp-sourcemaps');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -24,23 +25,15 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-var styleTask = function (stylesPath, srcs) {
-    return ($.rubySass('./',{
-        style: 'expanded',
-        precision: 10
-      })
-      .on('error', console.error.bind(console))
-    )
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('./' + stylesPath))
-    .pipe($.if('*.css', $.cssmin()))
-    .pipe(gulp.dest('./' + stylesPath))
-    .pipe($.size({title: stylesPath}));
-};
-
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
-  return styleTask('/', ['*.scss']);
+    return sass('./', { sourcemap: true })
+    .on('error', function (err) {
+      console.error('Error!', err.message);
+   })
+   .pipe(sourcemaps.write())
+   .pipe(gulp.dest('result/'));
+  })
 });
 
 // Lint JavaScript
@@ -74,7 +67,7 @@ gulp.task('serve', ['styles'], function () {
   });
 
   gulp.watch(['*.html'], reload);
-  gulp.watch(['*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['component/*.{scss}'], ['styles', reload]);
   gulp.watch(['*.js'], ['jshint']);
 });
 
