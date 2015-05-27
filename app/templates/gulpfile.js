@@ -14,6 +14,9 @@ var util = require('gulp-util');
 var gulpif = require('gulp-if');
 var concat = require('gulp-concat');
 var replace = require('gulp-replace');
+var sass = require('gulp-ruby-sass');
+var sourcemaps = require('gulp-sourcemaps');
+
 var isNotAutoLogin = function() {
   return !(util.env.user && util.env.pass);
 };
@@ -49,31 +52,22 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-var styleTask = function (stylesPath, srcs) {
-  return gulp.src(srcs.map(function(src) {
-      return path.join('pgevolution', stylesPath, src);
-    }))
-    .pipe($.changed(stylesPath, {extension: '.scss'}))
-    .pipe($.rubySass({
-        style: 'expanded',
-        precision: 10
-      })
-      .on('error', console.error.bind(console))
-    )
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulp.dest('.tmp/' + stylesPath))
-    .pipe($.if('*.css', $.cssmin()))
-    .pipe(gulp.dest('dist/' + stylesPath))
-    .pipe($.size({title: stylesPath}));
-};
-
-// Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
-  return styleTask('styles', ['**/*.css', '*.scss']);
+    return sass('pgevolution/', { sourcemap: true })
+    .on('error', function (err) {
+      console.error('Error!', err.message);
+   })
+   .pipe(sourcemaps.write())
+   .pipe(gulp.dest('pgevolution/'));
 });
 
 gulp.task('components', function () {
-  return styleTask('components', ['**/*.css', '**/*.scss']);
+  return sass('components/', { sourcemap: true })
+  .on('error', function (err) {
+    console.error('Error!', err.message);
+ })
+ .pipe(sourcemaps.write())
+ .pipe(gulp.dest('components/'));
 });
 
 // Lint JavaScript
