@@ -34,7 +34,8 @@ var environmentConf = {
 };
 
 var scriptsList = [
-    '<%= projectName %>/scripts/pgevolution.js'
+    'pgevolution/scripts/config.js',
+    'pgevolution/scripts/pgevolution.js'
 ];
 
 var environment = 'dev';
@@ -52,12 +53,12 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 gulp.task('styles', function () {
-    return sass('<%= projectName %>/', { sourcemap: true })
+    return sass('pgevolution/', { sourcemap: true })
     .on('error', function (err) {
       console.error('Error!', err.message);
    })
    .pipe(sourcemaps.write())
-   .pipe(gulp.dest('<%= projectName %>/'));
+   .pipe(gulp.dest('pgevolution/'));
 });
 
 gulp.task('components', function () {
@@ -72,9 +73,9 @@ gulp.task('components', function () {
 // Lint JavaScript
 gulp.task('jshint', function () {
   return gulp.src([
-      '<%= projectName %>/scripts/**/*.js',
-      '<%= projectName %>/components/**/*.js',
-      '<%= projectName %>/components/**/*.html'
+      'pgevolution/scripts/**/*.js',
+      'pgevolution/components/**/*.js',
+      'pgevolution/components/**/*.html'
     ])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint.extract()) // Extract JS from .html files
@@ -85,7 +86,7 @@ gulp.task('jshint', function () {
 
 // Optimize Images
 gulp.task('images', function () {
-  return gulp.src('<%= projectName %>/images/**/*')
+  return gulp.src('pgevolution/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
@@ -94,11 +95,11 @@ gulp.task('images', function () {
     .pipe($.size({title: 'images'}));
 });
 
-// Copy All Files At The Root Level (<%= projectName %>)
+// Copy All Files At The Root Level (pgevolution)
 gulp.task('copy', function () {
   var pgevolution = gulp.src([
-    '<%= projectName %>/*',
-    '!<%= projectName %>/test',
+    'pgevolution/*',
+    '!pgevolution/test',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
@@ -108,10 +109,10 @@ gulp.task('copy', function () {
     'components/**/*'
   ]).pipe(gulp.dest('dist/components'));
 
-  var components = gulp.src(['<%= projectName %>/components/**/*.html'])
+  var components = gulp.src(['pgevolution/components/**/*.html'])
     .pipe(gulp.dest('dist/components'));
 
-  var vulcanized = gulp.src(['<%= projectName %>/components/components.html'])
+  var vulcanized = gulp.src(['pgevolution/components/components.html'])
     .pipe($.rename('components.vulcanized.html'))
     .pipe(gulp.dest('dist/components'));
 
@@ -120,16 +121,16 @@ gulp.task('copy', function () {
 
 // Copy Web Fonts To Dist
 gulp.task('fonts', function () {
-  return gulp.src(['<%= projectName %>/fonts/**'])
+  return gulp.src(['pgevolution/fonts/**'])
     .pipe(gulp.dest('dist/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
 
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {
-  var assets = $.useref.assets({searchPath: ['.tmp', '<%= projectName %>', 'dist']});
+  var assets = $.useref.assets({searchPath: ['.tmp', 'pgevolution', 'dist']});
 
-  return gulp.src(['<%= projectName %>/**/*.html', '!<%= projectName %>/{components,test}/**/*.html'])
+  return gulp.src(['pgevolution/**/*.html', '!pgevolution/{components,test}/**/*.html'])
     // Replace path for vulcanized assets
     .pipe($.if('*.html', $.replace('components/components.html', 'components/components.vulcanized.html')))
     .pipe(assets)
@@ -177,7 +178,7 @@ gulp.task('serve', ['styles', 'components', 'buildIndex', 'builCoreJS'], functio
     //       will present a certificate warning in the browser.
     // https: true,
     server: {
-      baseDir: ['.tmp', '<%= projectName %>'],
+      baseDir: ['.tmp', 'pgevolution'],
       routes: {
         '/components': 'components'
       },
@@ -185,11 +186,11 @@ gulp.task('serve', ['styles', 'components', 'buildIndex', 'builCoreJS'], functio
     }
   });
 
-  gulp.watch(['<%= projectName %>/**/*.html'], reload);
-  gulp.watch(['<%= projectName %>/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['<%= projectName %>/components/**/*.{scss,css}'], ['components', reload]);
-  gulp.watch(['<%= projectName %>/{scripts,components}/**/*.js'], ['jshint']);
-  gulp.watch(['<%= projectName %>/images/**/*'], reload);
+  gulp.watch(['pgevolution/**/*.html'], reload);
+  gulp.watch(['pgevolution/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['pgevolution/components/**/*.{scss,css}'], ['components', reload]);
+  gulp.watch(['pgevolution/{scripts,components}/**/*.js'], ['jshint']);
+  gulp.watch(['pgevolution/images/**/*'], reload);
 });
 
 // Build and serve the output from the dist build
@@ -223,20 +224,20 @@ gulp.task('envConfig', function() {
 
 //replace in index.html
 gulp.task('buildIndex', function () {
-  return gulp.src('<%= projectName %>/_index.html')
+  return gulp.src('pgevolution/_index.html')
     .pipe(concat('index.html'))
     .pipe(gulpif(isNotAutoLogin,
       replace(/\/\*LOGIN_START\b\*\/((.|[\r\n])*?)\/\*LOGIN_END\b\*\//g, '')
     ))
-    .pipe(gulp.dest('<%= projectName %>/'));
+    .pipe(gulp.dest('pgevolution/'));
 });
 
 gulp.task('builCoreJS', function () {
   if(environment !== 'pro') {
-    scriptsList = scriptsList.concat('<%= projectName %>/scripts/loginLib.js');
+    scriptsList = scriptsList.concat('pgevolution/scripts/loginLib.js');
   }
   return gulp.src(scriptsList)
-    .pipe(concat('<%= projectName %>-dist.js'))
+    .pipe(concat('pgevolution-dist.js'))
     .pipe(replace(/base_login_url/g, environmentConf[environment].base_login_url))
     .pipe(replace(/autologin_value/g, function(){
       return (util.env.user && util.env.pass)?'true':'false';
@@ -247,7 +248,7 @@ gulp.task('builCoreJS', function () {
     .pipe(replace(/pass_value/g, function() {
       return (util.env.pass)? ('' + util.env.pass).replace(/[',", ]/g, '') || '' : '';
     }))
-    .pipe(gulp.dest('<%= projectName %>/scripts/'));
+    .pipe(gulp.dest('pgevolution/scripts/'));
 });
 
 
