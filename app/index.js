@@ -3,10 +3,17 @@ var yeoman = require('yeoman-generator');
 var path = require('path');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var elementNameValidator = require('validate-element-name');
+var _ = require('lodash');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
+
+    this.argument('project-name', {
+      desc: 'Tag name of the project to generate.',
+      required: true,
+    });
 
     this.option('skip-install', {
       desc:     'Whether dependencies should be installed',
@@ -28,12 +35,32 @@ module.exports = yeoman.generators.Base.extend({
         name: 'includeWCT',
         message: 'Would you like to include web-component-tester?',
         type: 'confirm'
-      }];
+      },{
+          name: 'includeLogin',
+          message: 'Would you like to include login.html?',
+          type: 'confirm'
+        },
+      ];
 
     this.prompt(prompts, function (answers) {
       this.includeWCT = answers.includeWCT;
+      this.includeLogin = answers.includeLogin;
       done();
     }.bind(this));
+  },
+  validate: function () {
+    this.projectName = this['project-name'];
+    var result = elementNameValidator(this.projectName);
+
+    if (!result.isValid) {
+      this.emit('error', new Error(chalk.red(result.message)));
+    }
+
+    if (result.message) {
+      console.warn(chalk.yellow(result.message + '\n'));
+    }
+
+    return true;
   },
   app: function () {
     this.copy('gitignore', '.gitignore');
@@ -44,19 +71,21 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('editorconfig', '.editorconfig');
     this.template('gulpfile.js');
     this.template('package.json', 'package.json');
-    this.mkdir('pgevolution');
-    this.mkdir('pgevolution/styles');
-    this.mkdir('pgevolution/images');
-    this.mkdir('pgevolution/scripts');
-    this.template('pgevolution/404.html');
-    this.copy('pgevolution/styles/main.css', 'pgevolution/styles/main.css');
-    this.copy('pgevolution/scripts/pgevolution.js', 'pgevolution/scripts/pgevolution.js');
-    this.copy('pgevolution/scripts/config.js', 'pgevolution/scripts/config.js');
-    this.copy('pgevolution/scripts/loginLib.js', 'pgevolution/scripts/loginLib.js');
-    this.copy('pgevolution/htaccess', 'pgevolution/.htaccess');
-    this.copy('pgevolution/index.html', 'pgevolution/index.html');
-    this.copy('pgevolution/_index.html', 'pgevolution/_index.html');
-    this.copy('pgevolution/login.html', 'pgevolution/login.html');
+    this.mkdir(this.projectName);
+    this.mkdir(this.projectName + '/styles');
+    this.mkdir(this.projectName + '/images');
+    this.mkdir(this.projectName +'/scripts');
+    this.copy('files/404.html',this.projectName);
+    this.template('files/styles/main.scss', this.projectName + '/styles/main.scss');
+    this.copy('files/config/pgevolution.js', this.projectName + '/scripts/pgevolution.js');
+    this.copy('files/scripts/config.json', this.projectName + '/config/config.json');
+    this.template('files/scripts/loginLib.js', this.projectName + '/scripts/loginLib.js');
+    this.copy('files/htaccess', this.projectName + '/.htaccess');
+    this.template('files/index.html', this.projectName + '/index.html');
+    this.template('files/_index.html', this.projectName + '/_index.html');
+    if (this.includeLogin) {
+      this.template('file/login.html', this.projectName + '/login.html');
+    }
     this.copy('README.md', 'README.md');
     if (this.includeWCT) {
       this.copy('wct.conf.js', 'wct.conf.js');

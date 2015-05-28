@@ -1,10 +1,11 @@
-var PolymerApp = PolymerApp || {};
-PolymerApp.LoginLib = (function() {
+var <%= elementName %> = <%= elementName %> || {};
+
+<%= elementName %>.LoginLib = (function() {
   var password = '',
     username = '',
-    cookieUrl =  PolymerApp.config.LOGIN.urlPath + '/DFAUTH/slod/DFServletXML',
-    tsecUrl =  PolymerApp.config.LOGIN.urlPath + '/ASO/TechArchitecture/grantingTickets/V02',
-    sessionUrl =  PolymerApp.config.LOGIN.urlPath + '/ENPP/enpp_mult_web_mobility_02/sessions/v1';
+    cookieUrl =  <%= elementName %>.config.LOGIN.urlPath + '/DFAUTH/slod/DFServletXML',
+    tsecUrl =  <%= elementName %>.config.LOGIN.urlPath + '/ASO/TechArchitecture/grantingTickets/V02',
+    sessionUrl =  <%= elementName %>.config.LOGIN.urlPath + '/ENPP/enpp_mult_web_mobility_02/sessions/v1';
 
 
   function _setUserName(user) {
@@ -144,7 +145,7 @@ PolymerApp.LoginLib = (function() {
               data = JSON.parse(responseData);
             _saveLoginData({tsec: tsec, userdata: data.user});
             _getSession();
-            PolymerApp.config.LOGIN.logged = true;
+            <%= elementName %>.config.LOGIN.logged = true;
           },
           function(responseData) {
             reject(Error(responseData));
@@ -208,7 +209,7 @@ PolymerApp.LoginLib = (function() {
       }
 
 
-      if(!PolymerApp.config.LOGIN.logged) {
+      if(!<%= elementName %>.config.LOGIN.logged) {
         _setUserName(username);
         _setPassword(pass);
         _cleanSessionStorage();

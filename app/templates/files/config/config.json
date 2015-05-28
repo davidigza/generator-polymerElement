@@ -1,5 +1,4 @@
-var PolymerApp = PolymerApp || {};
-PolymerApp.config = {
+{
   ELEMENTS_PATHS: {
     'helpers':  'components/core/helpers/',
     'components': 'components/',
@@ -17,4 +16,4 @@ PolymerApp.config = {
     user: 'user_value',//varible entornos
     pass: 'pass_value' //varible entornos
   }
-};
+}

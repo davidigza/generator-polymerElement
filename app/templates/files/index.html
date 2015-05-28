@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="components/webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="components/polymer/polymer.html">
-  <link rel="import" href="components/bbva-core/bbva-core.html">
+  <link rel="import" href="components/lego-core/lego-core.html">
 </head>
 
 <body unresolved fullbleed layout vertical>
-  <template is="x-autobind" id="app">
-    <bbva-core></bbva-core>
+  <template id="app">
+    <lego-core app-name="<%= elementName %>" config-url="config/config.json"></lego-core>
 
   </template>
   <script src="scripts/pgevolution-dist.js"></script>
@@ -22,12 +22,12 @@
 
   <script>
   /*LOGIN_START*/ //do not change, it will be replaced in production
-  if(PolymerApp.LoginLib && PolymerApp.config.LOGIN.autologin) {
-    PolymerApp.LoginLib.doLogin(PolymerApp.config.LOGIN.user,
-      PolymerApp.config.LOGIN.pass)
+  if(<%= elementName %>.LoginLib && <%= elementName %>.config.LOGIN.autologin) {
+    <%= elementName %>.LoginLib.doLogin(<%= elementName %>.config.LOGIN.user,
+      <%= elementName %>.config.LOGIN.pass)
       .then(function() {
         console.log('Login OK!!');
-        PolymerApp.init();
+        <%= elementName %>.init();
       }, function(err) {
         console.log('Login Error!!');
       });
