@@ -1,11 +1,11 @@
-var <%= elementName %> = <%= elementName %> || {};
+var <%= projectName %> = <%= projectName %> || {};
 
-<%= elementName %>.LoginLib = (function() {
+<%= projectName %>.LoginLib = (function() {
   var password = '',
     username = '',
-    cookieUrl =  <%= elementName %>.config.LOGIN.urlPath + '/DFAUTH/slod/DFServletXML',
-    tsecUrl =  <%= elementName %>.config.LOGIN.urlPath + '/ASO/TechArchitecture/grantingTickets/V02',
-    sessionUrl =  <%= elementName %>.config.LOGIN.urlPath + '/ENPP/enpp_mult_web_mobility_02/sessions/v1';
+    cookieUrl =  <%= projectName %>.config.LOGIN.urlPath + '/DFAUTH/slod/DFServletXML',
+    tsecUrl =  <%= projectName %>.config.LOGIN.urlPath + '/ASO/TechArchitecture/grantingTickets/V02',
+    sessionUrl =  <%= projectName %>.config.LOGIN.urlPath + '/ENPP/enpp_mult_web_mobility_02/sessions/v1';
 
 
   function _setUserName(user) {
@@ -145,7 +145,7 @@ var <%= elementName %> = <%= elementName %> || {};
               data = JSON.parse(responseData);
             _saveLoginData({tsec: tsec, userdata: data.user});
             _getSession();
-            <%= elementName %>.config.LOGIN.logged = true;
+            <%= projectName %>.config.LOGIN.logged = true;
           },
           function(responseData) {
             reject(Error(responseData));
@@ -209,7 +209,7 @@ var <%= elementName %> = <%= elementName %> || {};
       }
 
 
-      if(!<%= elementName %>.config.LOGIN.logged) {
+      if(!<%= projectName %>.config.LOGIN.logged) {
         _setUserName(username);
         _setPassword(pass);
         _cleanSessionStorage();

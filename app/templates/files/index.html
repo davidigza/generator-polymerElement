@@ -14,7 +14,7 @@
 
 <body unresolved fullbleed layout vertical>
   <template id="app">
-    <lego-core app-name="<%= elementName %>" config-url="config/config.json"></lego-core>
+    <lego-core app-name="<%= projectName %>" config-url="config/config.json"></lego-core>
 
   </template>
   <script src="scripts/pgevolution-dist.js"></script>
@@ -22,12 +22,12 @@
 
   <script>
   /*LOGIN_START*/ //do not change, it will be replaced in production
-  if(<%= elementName %>.LoginLib && <%= elementName %>.config.LOGIN.autologin) {
-    <%= elementName %>.LoginLib.doLogin(<%= elementName %>.config.LOGIN.user,
-      <%= elementName %>.config.LOGIN.pass)
+  if(<%= projectName %>.LoginLib && <%= projectName %>.config.LOGIN.autologin) {
+    <%= projectName %>.LoginLib.doLogin(<%= projectName %>.config.LOGIN.user,
+      <%= projectName %>.config.LOGIN.pass)
       .then(function() {
         console.log('Login OK!!');
-        <%= elementName %>.init();
+        <%= projectName %>.init();
       }, function(err) {
         console.log('Login Error!!');
       });
