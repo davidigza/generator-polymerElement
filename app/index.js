@@ -77,8 +77,8 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir(this.projectName +'/scripts');
     this.copy('files/404.html',this.projectName);
     this.template('files/styles/main.scss', this.projectName + '/styles/main.scss');
-    this.copy('files/config/pgevolution.js', this.projectName + '/scripts/pgevolution.js');
-    this.copy('files/scripts/config.json', this.projectName + '/config/config.json');
+    this.copy('files/scripts/pgevolution.js', this.projectName + '/scripts/pgevolution.js');
+    this.copy('files/config/config.json', this.projectName + '/config/config.json');
     this.template('files/scripts/loginLib.js', this.projectName + '/scripts/loginLib.js');
     this.copy('files/htaccess', this.projectName + '/.htaccess');
     this.template('files/index.html', this.projectName + '/index.html');
