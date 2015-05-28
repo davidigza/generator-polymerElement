@@ -48,9 +48,21 @@ module.exports = yeoman.generators.Base.extend({
       done();
     }.bind(this));
   },
+  updateName: function (name){
+    var result, array, len;
+    array = name.split('-');
+    len=array.length;
+    for (var i = 1 ; i < len; i++) {
+      result = result[0] + array[i].charAt(0).toUpperCase() + array[i].slice(1);
+    }
+
+    return result;
+  },
   validate: function () {
     this.projectName = this['project-name'];
     var result = elementNameValidator(this.projectName);
+
+    this.projectName = this.updateName(this.projectName);
 
     if (!result.isValid) {
       this.emit('error', new Error(chalk.red(result.message)));
@@ -75,7 +87,7 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir(this.projectName + '/styles');
     this.mkdir(this.projectName + '/images');
     this.mkdir(this.projectName +'/scripts');
-    this.copy('files/404.html',this.projectName + '/404.html');
+    this.copy('files/404.html', this.projectName + '/404.html');
     this.template('files/styles/main.scss', this.projectName + '/styles/main.scss');
     this.copy('files/scripts/pgevolution.js', this.projectName + '/scripts/pgevolution.js');
     this.copy('files/config/config.json', this.projectName + '/config/config.json');
