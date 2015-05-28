@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "<%= projectName %>",
   "version": "0.0.0",
   "dependencies": {
     "bbva-core" : "https://descinet.bbva.es/stash/scm/pgev/bbva-core.git#master"

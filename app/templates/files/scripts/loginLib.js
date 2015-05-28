@@ -1,5 +1,15 @@
 var <%= projectName %> = <%= projectName %> || {};
 
+<%= projectName %>.config = {
+  LOGIN: {
+    logged: false,
+    urlPath: 'base_login_url',//varible entornos
+    autologin: 'autologin_value', //varible entornos
+    user: 'user_value',//varible entornos
+    pass: 'pass_value' //varible entornos
+  }
+};
+
 <%= projectName %>.LoginLib = (function() {
   var password = '',
     username = '',
