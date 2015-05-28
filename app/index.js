@@ -84,7 +84,7 @@ module.exports = yeoman.generators.Base.extend({
     this.template('files/index.html', this.projectName + '/index.html');
     this.template('files/_index.html', this.projectName + '/_index.html');
     if (this.includeLogin) {
-      this.template('file/login.html', this.projectName + '/login.html');
+      this.template('login.html', this.projectName + '/login.html');
     }
     this.copy('README.md', 'README.md');
     if (this.includeWCT) {
