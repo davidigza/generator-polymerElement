@@ -27,22 +27,21 @@
 ## Installation
 
 Install the generator
-`npm install -g generator-polymer`
+`npm install -g generator-polymerelement`
 
 Make a new directory and cd into it
 `mkdir -p my-project && cd $_`
 
 Scaffold a new Polymer project:
-`yo polymer`
+`yo polymer "name-project" `
 
 ## Generators
 
 Available generators:
 
 - [polymer (aka polymer:app)](#app)
-- [polymer:element](#element-alias-el)
 - [polymer:seed](#seed)
-- [polymer:gh](#gh)
+
 
 **Note: Generators are to be run from the root of your app**
 
@@ -51,27 +50,7 @@ Sets up a new Polymer app, generating all the boilerplate you need to get starte
 
 Example:
 ```bash
-yo polymer
-```
-
-### Element (alias: El)
-Generates a polymer element in `app/elements` and appends an import to `app/elements/elements.html`.
-
-Example:
-```bash
-yo polymer:element my-element
-
-# or use the alias
-
-yo polymer:el my-element
-```
-
-**Note: You must pass in an element name, and the name must contain a dash "-"**
-
-One can also include element dependencies to be imported. For instance, if you're creating a `fancy-menu` element which needs to import `core-menu` and `core-icon-button` as dependencies, you can generate the file like so:
-
-```bash
-yo polymer:el fancy-menu core-menu core-icon-button
+yo polymer project-Name
 ```
 
 #### Options
@@ -94,19 +73,6 @@ Example:
 mkdir -p components && cd $_
 yo polymer:seed x-foo
 ```
-
-### Gh
-Generates a Github pages branch for your [seed-element](#seed).
-
-If your documentation or demo pages have dependencies declared as devDependencies in `bower.json`, they will be included in your GitHub pages branch.
-
-Example:
-```bash
-cd components/x-foo
-yo polymer:gh
-```
-
-If, for some reason, you don't want the devDependencies, use the `--nodevdeps` option.
 
 ## Testing
 
