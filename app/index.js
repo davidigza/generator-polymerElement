@@ -53,7 +53,7 @@ module.exports = yeoman.generators.Base.extend({
     array = name.split('-');
     len=array.length;
     for (var i = 1 ; i < len; i++) {
-      result = result[0] + array[i].charAt(0).toUpperCase() + array[i].slice(1);
+      result = array[0] + array[i].charAt(0).toUpperCase() + array[i].slice(1);
     }
 
     return result;
