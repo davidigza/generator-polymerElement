@@ -27,11 +27,13 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
-    return sass('./', { sourcemap: true })
+    return sass('./', { sourcemap: false })
     .on('error', function (err) {
       console.error('Error!', err.message);
    })
-   .pipe(sourcemaps.write())
+   .pipe($.autoprefixer({
+            browsers:AUTOPREFIXER_BROWSERS
+        }))
    .pipe(gulp.dest('./'));
 });
 
