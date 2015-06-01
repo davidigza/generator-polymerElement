@@ -15,11 +15,11 @@
     "/demo/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#v0.9.0-rc.1",
+    "polymer": "Polymer/polymer#v1.0.0",
     "bbva-util-mocker" : "https://descinet.bbva.es/stash/scm/pgev/bbva-util-mocker.git#master"
   },
   "devDependencies": {
-    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.8",<% if (includeWCT) { %>
+    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^1.0.2",<% if (includeWCT) { %>
     "web-component-tester": "*"<% } %>
   }
 }
